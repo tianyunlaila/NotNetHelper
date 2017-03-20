@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +57,7 @@
   <ItemGroup>
     <Compile Include="DataBase\DbHelperOleDb.cs" />
     <Compile Include="DataBase\DbHelperOra.cs" />
+    <Compile Include="DataBase\DbHelperSQL.cs" />
     <Compile Include="File\DirFileHelper.cs" />
     <Compile Include="File\FileOperateHelper.cs" />
     <Compile Include="File\INIFileHelper.cs" />
