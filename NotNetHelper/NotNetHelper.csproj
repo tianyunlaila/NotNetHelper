@@ -58,6 +58,7 @@
     <Compile Include="DataBase\DbHelperOleDb.cs" />
     <Compile Include="DataBase\DbHelperOra.cs" />
     <Compile Include="DataBase\DbHelperSQL.cs" />
+    <Compile Include="Date\CNDate.cs" />
     <Compile Include="File\DirFileHelper.cs" />
     <Compile Include="File\FileOperateHelper.cs" />
     <Compile Include="File\INIFileHelper.cs" />
