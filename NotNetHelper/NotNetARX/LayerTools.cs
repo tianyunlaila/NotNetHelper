@@ -11,10 +11,16 @@ using Autodesk.AutoCAD.EditorInput;
 namespace NotNetHelper
 {
     /// <summary>
-    /// 图层操作类，新建，删除，设置当前层，颜色
+    /// 图层操作类
     /// </summary>
     public static class LayerTools
     {
+        /// <summary>
+        /// 添加不存在的图层
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="layerName">图层名</param>
+        /// <returns></returns>
         public static ObjectId AddLayer(this Database db, string layerName)
         {
             ObjectId layerId = ObjectId.Null;
@@ -32,7 +38,13 @@ namespace NotNetHelper
             }
             return layerId;
         }
-
+        /// <summary>
+        /// 设置图层索引颜色
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="layerName">图层名</param>
+        /// <param name="colorIndex">索引颜色</param>
+        /// <returns></returns>
         public static bool SetLayerColor(this Database db, string layerName, int colorIndex)
         {
             using (Transaction trans = db.TransactionManager.StartTransaction())
@@ -47,7 +59,15 @@ namespace NotNetHelper
             }
             return true;
         }
-
+        /// <summary>
+        /// 设置图层rgb颜色
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="layerName"></param>
+        /// <param name="RedColor">R</param>
+        /// <param name="GreenColor">G</param>
+        /// <param name="BlueColor">B</param>
+        /// <returns></returns>
         public static bool SetLayerColor(this Database db, string layerName, int RedColor, int GreenColor, int BlueColor)
         {
             using (Transaction trans = db.TransactionManager.StartTransaction())
@@ -62,7 +82,12 @@ namespace NotNetHelper
             }
             return true;
         }
-
+        /// <summary>
+        /// 设置当前层
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="layerName">图层名</param>
+        /// <returns></returns>
         public static bool SetCurrentLayer(this Database db, string layerName)
         {
             using (Transaction trans = db.TransactionManager.StartTransaction())
@@ -76,7 +101,11 @@ namespace NotNetHelper
             }
             return true;
         }
-
+        /// <summary>
+        /// 删除图层及内部数据
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="layerName"></param>
         public static void DeleteLayer(this Database db, string layerName)
         {
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
@@ -109,7 +138,12 @@ namespace NotNetHelper
                 trans.Commit();
             }
         }
-
+        /// <summary>
+        /// 设置图层关闭
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="layerName">图层名</param>
+        /// <returns></returns>
         public static bool SetLayerOff(this Database db, string layerName)
         {
             using (Transaction trans = db.TransactionManager.StartTransaction())
@@ -128,7 +162,12 @@ namespace NotNetHelper
             }
             return true;
         }
-
+        /// <summary>
+        /// 设置图层开启
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="layerName">图层名</param>
+        /// <returns></returns>
         public static bool SetLayerOn(this Database db, string layerName)
         {
             using (Transaction trans = db.TransactionManager.StartTransaction())
@@ -141,12 +180,13 @@ namespace NotNetHelper
             }
             return true;
         }
-
-        public static List<string> GetLayerName(this Database db)
+        /// <summary>
+        /// 获取图层名列表
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public static List<string> GetLayerNameList(this Database db)
         {
-            Document doc = Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument;
-            DocumentLock doclock = doc.LockDocument();
-            //操作过程
             List<string> layerList = new List<string>();
             LayerTable lyTable;
             LayerTableRecord ltLayerTableRecord;
@@ -162,7 +202,6 @@ namespace NotNetHelper
                 tr.Commit();
                 //事务提交
             }
-            doclock.Dispose();
             return layerList;
         }
     }
