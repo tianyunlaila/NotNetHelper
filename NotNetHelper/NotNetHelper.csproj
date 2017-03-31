@@ -59,6 +59,7 @@
     <Compile Include="DataBase\DbHelperOra.cs" />
     <Compile Include="DataBase\DbHelperSQL.cs" />
     <Compile Include="Date\CNDate.cs" />
+    <Compile Include="DEncrypt\RSACryption.cs" />
     <Compile Include="File\DirFileHelper.cs" />
     <Compile Include="File\FileOperateHelper.cs" />
     <Compile Include="File\INIFileHelper.cs" />
